@@ -6,11 +6,21 @@ export default class App extends Component
   //Hàm khởi tạo
   constructor()
   {
-    super()
-    this.state = {resultText: "", calculationText: ""}
-    this.operations = ['D','+','-','*','/']
+    super();
+    this.state = {
+      resultText: "", 
+      calculationText: "",
+      }
+    this.operations = ['D','+','-','*','/','F'] //Các nút ở cột màu đen
+    this.nums = [['C','+/-','%'],[1,2,3],[4,5,6],[7,8,9],['.',0,'=']] //Các nút ở phần màu vàng
   }
 
+
+  history()
+  {
+
+  }
+  // Hàm xóa hết ('C","+/-","%")
   delcalc(temp)
   {
     switch(temp)
@@ -18,14 +28,11 @@ export default class App extends Component
       case 'C':
         this.setState({calculationText: "",resultText: ""})
         break
-      case 'D':
-        console.log(this.state.resultText)
-        let text = this.state.resultText.split('')
-        text.pop()
-        this.setState({ resultText: text.join('')})
+      case '+/-':
+        this.setState({resultText: this.state.resultText*-1})
         break
       case'%':
-        this.setState({calculationText: eval(this.state.resultText/100)})
+        this.setState({resultText: this.state.resultText+"/100"})
         break
     }
 
@@ -64,7 +71,7 @@ export default class App extends Component
     this.setState({resultText: this.state.resultText+text}) // Xuất ký tự đã nhập trên khung màu đỏ
   }
 
-  //các nút D+-*/
+  //Xử lý các nút D+-*/
   operate(operation)
   {
     switch(operation)
@@ -89,22 +96,21 @@ export default class App extends Component
   render()
   {
     let rows = []
-    let nums = [['C','D','%'],[1,2,3],[4,5,6],[7,8,9],['.',0,'=']]
     let row = []
-    for(let i =0; i<3;i++)
+    for(let i =0; i<3;i++)//Vòng lặp tạo các nút C,+/-,%
     {
-      row.push(<TouchableOpacity onPress={() => this.delcalc(nums[0][i])} style={styles.btn}>
-                  <Text style={styles.btntext}>{nums[0][i]}</Text>
+      row.push(<TouchableOpacity onPress={() => this.delcalc(this.nums[0][i])} style={styles.btn}>
+                  <Text style={styles.btntext}>{this.nums[0][i]}</Text>
                 </TouchableOpacity>)
     }
     rows.push(<View style={styles.row}>{row}</View>)
-    for(let i=1; i<5; i++)
+    for(let i=1; i<5; i++)//Vòng lặp tạo các nút 1,2,3,4,5,6,7,8,9,.,0,=
     {
       let row = []
       for(let j=0; j<3; j++)
       {
-        row.push(<TouchableOpacity onPress={() => this.buttonPressed(nums[i][j])} style={styles.btn}>
-                  <Text style={styles.btntext}>{nums[i][j]}</Text>
+        row.push(<TouchableOpacity onPress={() => this.buttonPressed(this.nums[i][j])} style={styles.btn}>
+                  <Text style={styles.btntext}>{this.nums[i][j]}</Text>
                 </TouchableOpacity>)
       }
       rows.push(<View style={styles.row}>{row}</View>)
@@ -112,7 +118,7 @@ export default class App extends Component
 
     
     let ops = []
-    for(let i = 0; i<5; i++)
+    for(let i = 0; i<6; i++)//Vòng lặp tạo các nút D,+,-,*,/,F
     {
       ops.push(<TouchableOpacity style={styles.btn} onPress={() => this.operate(this.operations[i])} >
                   <Text style={[styles.btntext, styles.white]}>{this.operations[i]}</Text>
@@ -139,42 +145,53 @@ export default class App extends Component
   }
 }
 
+//Khu vực thay đổi UI
 const styles = StyleSheet.create({
   container: {
     flex:1
   },
+  //Kích cỡ chữ nhập vào (khung màu đỏ)
   resultText:{
     fontSize:30,
     color: 'white'
   },
+  //Vị trí các nút
   btn:{
     flex:1,
     alignItems: 'center',
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
+  //các nút C +/- % 1 2 3 4 5 ...
   btntext: {
-    fontSize:30 
+    fontSize:30,
+    color: 'black'
   },
+  //các nút D + - * / F
   white: {
+    fontSize: 30,
     color: 'white'
   },
+  //Kích cỡ chữ xuất ra(khung màu xanh lá)
   calculationText:{
     fontSize:24,
     color: 'white'
   },
+
   row:{
       flexDirection: 'row',
       flex: 1,
       justifyContent: 'space-around',
       alignContent: 'center'
   },
+  //khung input(màu đỏ)
   result: {
     flex:2,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'flex-end'
   },
+  //khung output(màu xanh lá)
   calculation: {
     flex:1,
     backgroundColor: 'green',
@@ -185,10 +202,12 @@ const styles = StyleSheet.create({
     flexGrow:7,
     flexDirection: 'row'
   },
+  //Các nút 1 2 3 4 5 ...
   numbers: {
     flex:3,
     backgroundColor: 'yellow'
   },
+  //các nút D + - * / F
   operations: {
     flex:1,
     justifyContent: 'space-around',
