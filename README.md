@@ -54,6 +54,6 @@ Step 3:
 ## Thành viên nhóm
 1. Trần Quang Nhật - MSSV:20520675 
 2. Nguyễn Phúc Hưng - MSSV:20520527 
-3. Đoàn Ngọc Như Quỳnh - MSSV:20520735 
+3. Đoàn Ngọc Như Quỳnh - MSSV:20520732
 4. Trương Quang Thiện - MSSV:20520310
 <br />
