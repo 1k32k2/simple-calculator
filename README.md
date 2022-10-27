@@ -2,6 +2,27 @@
 
 A simple calculator built with React Native
 
+## Libraries
+```bash
+    "@expo/vector-icons": "^13.0.0",
+    "react-native-paper": "^4.7.2",
+    "react-native-screens": "~3.15.0",
+    "react-native-tab-view": "^3.0.0",
+    "@react-navigation/stack": "6.2.1",
+    "react-native-pager-view": "5.4.24",
+    "react-native-reanimated": "~2.9.1",
+    "@react-navigation/drawer": "6.4.1",
+    "@react-navigation/native": "6.0.10",
+    "@react-navigation/elements": "1.3.3",
+    "react-native-gesture-handler": "~2.5.0",
+    "@react-navigation/bottom-tabs": "6.3.1",
+    "@react-navigation/native-stack": "6.6.1",
+    "react-native-safe-area-context": "4.3.1",
+    "@react-native-community/masked-view": "*",
+    "@react-navigation/material-top-tabs": "6.2.1",
+    "@react-navigation/material-bottom-tabs": "6.2.1"
+```
+
 ## Installation
 
 Step 1: Clone this repo, open CMD and change directory to the folder you have cloned, then input
