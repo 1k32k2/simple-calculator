@@ -52,7 +52,8 @@ Step 3:
   3. The app should run now
 
 ## Thành viên nhóm
-Trần Quang Nhật - MSSV:20520675 \n
-Nguyễn Phúc Hưng - MSSV:20520527 \n
-Đoàn Ngọc Như Quỳnh - MSSV:20520735 \n
+Trần Quang Nhật - MSSV:20520675 
+Nguyễn Phúc Hưng - MSSV:20520527 
+Đoàn Ngọc Như Quỳnh - MSSV:20520735 
 Trương Quang Thiện - MSSV:20520310
+<br />
